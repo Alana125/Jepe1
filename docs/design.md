@@ -1,415 +1,509 @@
-# Design da Aplicação — JEPE
+﻿## SPEC DE DESIGN — JEPE
 ## Jornada de Ensino, Pesquisa e Extensão
+## Objetivo do Design
+
+Definir a identidade visual, estrutura de navegação, layouts, componentes, estados e padrões de interação da interface do sistema JEPE.
+
+O design deverá priorizar:
+
+Clareza;
+Organização;
+Hierarquia visual;
+Consistência;
+Facilidade de navegação;
+Aparência institucional e moderna.
+
+##  Identidade Visual
+2.1 Paleta de cores
+Token	Hex	Uso
+Primary Navy	#12355B	Cabeçalhos, títulos e elementos institucionais
+Secondary Purple	#5B3FA3	Ações principais e destaques
+Accent Blue	#4EA5D9	Informações e elementos secundários
+Success Green	#36A269	Estados positivos
+Highlight Yellow	#F2C14E	Atenção e destaques
+Background	#F7F9FC	Fundo da aplicação
+Text	#17202A	Texto principal
+2.2 Tipografia
+
+Utilizar fonte sem serifa.
+
+Elemento	Tamanho	Peso
+H1	32px	700
+H2	24px	700
+H3	20px	600
+Texto	16px	400
+Texto secundário	14px	400
+## Estrutura Geral da Interface
+
+A aplicação utilizará uma estrutura composta por:
+
+┌──────────────────────────────────────────────────────┐
+│                       NAVBAR                         │
+├───────────────┬──────────────────────────────────────┤
+│               │                                      │
+│   SIDEBAR     │          CONTEÚDO PRINCIPAL          │
+│               │                                      │
+│               │                                      │
+└───────────────┴──────────────────────────────────────┘
+Navbar
+
+Deverá conter:
+
+Logo JEPE;
+Nome do usuário;
+Identificação do perfil;
+Notificações;
+Menu de usuário.
+Sidebar
+
+A Sidebar será adaptada ao perfil de acesso e manterá o mesmo padrão visual em todas as áreas.
+
+##  Navegação
+Aluno
+Dashboard
+Meu Projeto
+Documentos
+Resultados
+Perfil
+Professor Orientador
+Dashboard
+Meus Projetos
+Novo Projeto
+Avaliações
+Resultados
+Perfil
+Professor Avaliador
+Dashboard
+Projetos para Avaliar
+Avaliações Parciais
+Avaliações Finais
+Histórico
+Perfil
+Administrador
+Dashboard
+Projetos
+Avaliações
+Ranking
+Áreas
+Critérios
+Períodos
+Usuários
 
-## 1. Objetivo
+## Login
 
-Definir as diretrizes visuais e de experiência do usuário da aplicação JEPE.
+Tela centralizada contendo:
 
-Este documento aborda apenas design visual, experiência do usuário, identidade, cores, tipografia, layout, componentes, estados, responsividade e acessibilidade. Não inclui arquitetura técnica, backend, banco de dados, APIs ou regras de negócio.
+Logo JEPE;
+Campo de e-mail;
+Campo de senha;
+Botão de entrada;
+Mensagens de validação.
+                 JEPE
 
----
 
-## 2. Princípios de Design
+        Jornada de Ensino,
+        Pesquisa e Extensão
 
-A interface deve ser:
 
-- clara e objetiva;
-- institucional e confiável;
-- acessível e inclusiva;
-- consistente em todas as telas;
-- responsiva e adaptável;
-- centrada no usuário e no conteúdo.
+        E-mail
+        [________________]
 
-Deve priorizar legibilidade, navegação intuitiva e hierarquia visual clara.
 
----
+        Senha
+        [________________]
 
-## 3. Identidade Visual
 
-### 3.1 Conceito
+             [ ENTRAR ]
+## Dashboard
 
-A identidade da JEPE deve refletir a integração entre ensino, pesquisa e extensão, com tom acadêmico e institucional.
+O Dashboard deverá utilizar cards de indicadores, listas resumidas e blocos de informação.
 
-### 3.2 Estilo
+Estrutura:
 
-- limpo e moderno;
-- sóbrio, sem excesso de elementos decorativos;
-- uso equilibrado de cores e espaços;
-- foco na clareza e na organização da informação.
+Título da página
+Descrição curta
 
----
 
-## 4. Paleta de Cores
+┌──────────┐ ┌──────────┐ ┌──────────┐
+│ Indicador│ │ Indicador│ │ Indicador│
+└──────────┘ └──────────┘ └──────────┘
 
-### 4.1 Cores principais
 
-| Token | Nome | HEX | Uso |
-|---|---|---|---|
-| primary-navy | Azul profundo | #12355B | Cabeçalhos, navegação e títulos |
-| secondary-purple | Roxo científico | #5B3FA3 | Botões principais e destaques |
-| ccent-blue | Azul claro | #4EA5D9 | Elementos de apoio, links e estados de foco |
-| success-green | Verde inovação | #36A269 | Feedback de sucesso e estados positivos |
-| highlight-yellow | Amarelo destaque | #F2C14E | Chamadas de atenção e indicadores |
-| ackground | Fundo | #F7F9FC | Fundo geral das telas |
-| 	ext | Texto | #17202A | Texto principal |
+Conteúdo principal
 
-### 4.2 Uso das cores
 
-As cores podem reforçar áreas temáticas sem depender apenas delas para transmitir significado.
+┌──────────────────────┐ ┌─────────────┐
+│                      │ │             │
+│      Informações     │ │  Atividade  │
+│                      │ │             │
+└──────────────────────┘ └─────────────┘
 
-- Ensino → #4EA5D9;
-- Pesquisa → #5B3FA3;
-- Extensão → #36A269;
-- Destaques leves → #F2C14E.
+Os indicadores apresentados deverão variar conforme o perfil.
 
-Sempre combine cor com texto, ícones ou formas para maior acessibilidade.
+##  Projetos
 
----
+A listagem de projetos utilizará:
 
-## 5. Tipografia
+Barra de pesquisa;
+Filtros;
+Cards ou tabela;
+Status visuais;
+Ações contextuais.
+Project Card
+┌──────────────────────────────────────────┐
+│ Título do Projeto                        │
+│ Área                                     │
+│ Orientador                               │
+│                                          │
+│ Status                    [Em avaliação] │
+│                                          │
+│                         [Ver projeto →]  │
+└──────────────────────────────────────────┘
+## Tela de Projeto
 
-A tipografia deve ser sem serifa, com forte hierarquia e boa legibilidade.
+A página de detalhes deverá utilizar uma hierarquia organizada em seções:
 
-### 5.1 Hierarquia tipográfica
+Título do projeto
+Área • Status
 
-#### H1
-- 32px;
-- peso 700;
-- #12355B.
 
-#### H2
-- 24px;
-- peso 700;
-- #12355B.
+────────────────────────────────────────
 
-#### H3
-- 20px;
-- peso 600;
-- #12355B.
 
-#### Texto principal
-- 16px;
-- peso 400;
-- #17202A.
+Informações gerais
 
-#### Texto secundário
-- 14px;
-- peso 400;
-- cinza neutro.
 
-### 5.2 Legibilidade
+Resumo
+Objetivos
+Metodologia
 
-Mantenha espaçamento entre linhas confortável e contraste adequado entre texto e fundo.
 
----
+────────────────────────────────────────
 
-## 6. Espaçamento e Grid
 
-Use uma escala de espaçamento baseada em múltiplos de 8px: 8, 16, 24, 32, 48 e 64.
+Orientador e integrantes
 
-O layout deve ser coerente e alinhado em colunas, com margens e preenchimentos consistentes.
 
----
+────────────────────────────────────────
 
-## 7. Layout Geral
 
-### 7.1 Estrutura de página
+Avaliações
 
-Cada página deve incluir:
 
-- cabeçalho com navegação e identidade;
-- título e subtítulo quando necessário;
-- área principal de conteúdo;
-- ações contextuais visíveis;
-- painéis e cards para informações secundárias.
+────────────────────────────────────────
 
-### 7.2 Páginas internas
 
-Em telas internas, use navegação lateral ou abas para separar seções sem sobrecarregar o usuário.
+Resultado
 
----
+As informações deverão ser agrupadas visualmente para facilitar a leitura.
 
-## 8. Navegação
+##  Cadastro de Projeto
 
-### 8.1 Barra superior
+O formulário deverá ser dividido em blocos.
 
-- fundo #12355B;
-- logo JEPE em branco;
-- links e texto em branco;
-- item ativo destacado em #4EA5D9 ou #5B3FA3;
-- botão principal em #5B3FA3.
+Informações do projeto
+Título;
+Área;
+Resumo;
+Objetivos;
+Metodologia.
+Integrantes
 
-### 8.2 Navegação lateral
+Utilizar componente de seleção/pesquisa de usuários.
 
-- fundo claro;
-- texto escuro legível;
-- indicador de seleção claro;
-- espaçamento generoso entre itens.
+Ações
+[ Cancelar ]       [ Salvar ]
 
----
+Quando houver uma ação de envio:
 
-## 9. Tela de Login
+[ Salvar ]       [ Enviar ]
+## Avaliações
 
-### 9.1 Objetivo
+A interface de avaliação deverá separar visualmente as duas etapas:
 
-Oferecer uma entrada simples e acessível ao sistema.
+┌──────────────────────────────────────────┐
+│ AVALIAÇÃO PARCIAL                        │
+│                                          │
+│ Projeto                                  │
+│ Orientador                               │
+│ Avaliador                                │
+└──────────────────────────────────────────┘
 
-### 9.2 Layout
+e
 
-- card centralizado;
-- fundo #F7F9FC;
-- campos com bordas suaves;
-- botão principal #5B3FA3;
-- feedback de erro evidente.
+┌──────────────────────────────────────────┐
+│ AVALIAÇÃO FINAL                          │
+│                                          │
+│ Projeto                                  │
+│ Orientador                               │
+│ Avaliador                                │
+└──────────────────────────────────────────┘
+Formulário de avaliação
 
-### 9.3 Componentes
+Cada critério será apresentado em um bloco:
 
-- título e subtítulo claros;
-- campo de e-mail;
-- campo de senha;
-- botão de login;
-- link de recuperação ou ajuda, se houver.
+Relevância
 
----
 
-## 10. Dashboard
+0  1  2  3  4  5  6  7  8  9  10
 
-### 10.1 Objetivo
 
-Oferecer visão imediata do estado geral e das métricas principais.
+Comentário
+[___________________________________]
 
-### 10.2 Estrutura
+O componente deverá facilitar a seleção da nota sem sobrecarregar a tela.
 
-- saudação ou contexto;
-- indicadores em cards;
-- filtros e busca;
-- gráficos ou painéis de resumo;
-- lista de itens recentes.
+##  Banca Avaliadora
 
-### 10.3 Cards de indicadores
+A banca será apresentada através de cards individuais:
 
-- fundo branco;
-- bordas suaves;
-- título pequeno;
-- valor em destaque;
-- cor de apoio moderada;
-- espaçamento interno consistente.
+┌──────────────────────────────────────┐
+│ Prof. Maria Silva                    │
+│ Avaliador                             │
+│                                      │
+│ Parcial       ✓ Concluída            │
+│ Final         ○ Pendente              │
+└──────────────────────────────────────┘
 
----
+Os estados deverão ser visualmente distintos.
 
-## 11. Lista de Projetos
+ ## Resultados e Ranking
+Resultado
 
-### 11.1 Objetivo
+Utilizar cards de destaque:
 
-Facilitar a localização e acompanhamento dos projetos.
+┌────────────────────┐
+│ NOTA FINAL         │
+│                    │
+│       8,7          │
+└────────────────────┘
+Ranking
 
-### 11.2 Elementos
+Utilizar tabela:
 
-- busca por título;
-- filtros por área e situação;
-- cards de projeto;
-- indicação clara de status.
+Posição	Projeto	Área	Nota
+1º	Projeto A	Tecnologia	9,4
+2º	Projeto B	Saúde	9,1
+3º	Projeto C	Meio Ambiente	8,9
 
-### 11.3 Cartão de projeto
 
-Cada cartão deve incluir:
+##  Área do Aluno
 
-- título do projeto;
-- área temática;
-- status;
-- resumo curto;
-- ação de acesso rápido.
+A área do aluno terá uma interface mais simples e enxuta, mantendo apenas as telas necessárias à sua experiência.
 
-### 11.4 Status visuais
+## Dashboard
 
-- Inscrito → #5B3FA3;
-- Em avaliação → #F2C14E;
-- Avaliado → #36A269;
-- Classificado → #12355B.
+Apresentar:
 
----
+Card do projeto;
+Status;
+Orientador;
+Documentos pendentes;
+Atalho para o projeto.
+Meu Projeto
 
-## 12. Cadastro e Edição de Projeto
+Utilizar layout de visualização com:
 
-### 12.1 Objetivo
+Título;
+Área;
+Orientador;
+Integrantes;
+Resumo;
+Objetivos;
+Metodologia;
+Status.
+Documentos
 
-Permitir preencher e revisar dados do projeto com clareza.
+Utilizar cards:
 
-### 12.2 Estrutura
+┌──────────────────────────────────────┐
+│ Termo de Participação                │
+│                                      │
+│ Pendente de assinatura               │
+│                                      │
+│ [Visualizar]       [Assinar]         │
+└──────────────────────────────────────┘
+## Assinatura
 
-- informações gerais;
-- descrição e objetivos;
-- integrantes;
-- ações de salvar e cancelar.
+Utilizar modal de confirmação:
 
-### 12.3 Campos
+┌──────────────────────────────────────┐
+│ Assinar documento                    │
+│                                      │
+│ Termo de Participação                │
+│                                      │
+│ ☐ Confirmar assinatura               │
+│                                      │
+│ [Cancelar]       [Assinar]           │
+└──────────────────────────────────────┘
+## Resultados
 
-- labels acima dos campos;
-- foco em #4EA5D9;
-- ajuda em texto cinza;
-- erros próximos ao campo;
-- espaçamento uniforme.
+Utilizar cards de resultado:
 
-### 12.4 Botões
+┌─────────────────────────────┐
+│ Nota final                  │
+│                             │
+│          8,7                │
+│                             │
+│ Classificação: 3º lugar     │
+└─────────────────────────────┘
+## Administração
 
-- primário: #5B3FA3;
-- secundário: #36A269 ou neutro;
-- cancelamento discreto.
+A área administrativa utilizará tabelas e formulários.
 
----
+Tabelas
+Cabeçalho destacado;
+Linhas com espaçamento adequado;
+Status em badges;
+Ações agrupadas na última coluna.
 
-## 13. Detalhes do Projeto
+Exemplo:
 
-### 13.1 Objetivo
+┌──────────────┬────────────┬──────────┬────────┐
+│ Nome         │ Perfil     │ Status   │ Ações  │
+├──────────────┼────────────┼──────────┼────────┤
+│ João Silva   │ Professor  │ Ativo    │ Editar │
+│ Ana Souza    │ Aluno      │ Ativo    │ Editar │
+└──────────────┴────────────┴──────────┴────────┘
+## Componentes
 
-Exibir informações completas do projeto de forma organizada.
+A interface deverá utilizar componentes reutilizáveis:
 
-### 13.2 Layout
+Navbar
+Sidebar
+Button
+Input
+Select
+Card
+ProjectCard
+StatusBadge
+IndicatorCard
+SearchBar
+Filter
+Modal
+Toast
+EvaluationForm
+EvaluationCard
+EvaluatorCard
+Timeline
+RankingTable
+AdminTable
+DocumentCard
+DocumentViewer
+SignatureModal
 
-- título e status;
-- resumo;
-- objetivos;
-- metodologia;
-- orientador e integrantes;
-- avaliações.
 
-Use cards e separadores leves para melhorar a leitura.
 
----
+## Cards
 
-## 14. Tela de Avaliação
+Padrão:
 
-### 14.1 Objetivo
+Fundo branco;
+Bordas discretas;
+Cantos arredondados;
+Sombra leve;
+Espaçamento interno consistente;
+Hierarquia clara entre título e conteúdo.
 
-Permitir avaliação clara e estruturada do projeto.
+## Formulários
 
-### 14.2 Estrutura
+Os formulários deverão seguir:
 
-- identificação do projeto;
-- critérios em sequência;
-- controles de nota;
-- campo de comentário;
-- botão de envio destacado.
+Labels acima dos campos;
+Campos com altura consistente;
+Mensagens de erro abaixo do campo;
+Agrupamento por seção;
+Botões alinhados ao final do formulário;
+Espaçamento vertical uniforme.
 
-### 14.3 Critérios
 
-Cada critério deve ter:
+## Modais
 
-- label clara;
-- controle de pontuação;
-- indicação de preenchimento;
-- feedback visual quando incompleto.
+Os modais serão utilizados para:
 
----
+Confirmações;
+Assinaturas;
+Exclusões;
+Visualização rápida;
+Alertas importantes.
 
-## 15. Área Administrativa
+Estrutura:
 
-### 15.1 Objetivo
+┌──────────────────────────────────────┐
+│ Título                               │
+│                                      │
+│ Conteúdo                             │
+│                                      │
+│ [Cancelar]          [Confirmar]      │
+└──────────────────────────────────────┘
+## Timeline
 
-Oferecer painéis claros para gerenciamento de configurações.
+Para representar visualmente as etapas do projeto:
 
-### 15.2 Estrutura
+● Inscrição
+│
+● Projeto enviado
+│
+● Avaliação parcial
+│
+○ Avaliação final
+│
+○ Resultado
 
-- navegação lateral ou abas;
-- páginas para áreas, critérios, períodos e usuários;
-- tabelas legíveis;
-- ações acessíveis.
+Estados:
 
-### 15.3 Tabelas
+Concluído;
+Atual;
+Próximo;
+Indisponível.
 
-- fundo branco;
-- linhas e colunas claras;
-- rolagem horizontal em telas menores;
-- botões de ação visíveis.
+## Phase Banner
 
----
+Utilizar um banner informativo para destacar a etapa atual:
 
-## 16. Elementos de Interface
+┌──────────────────────────────────────────────┐
+│ FASE ATUAL                                   │
+│ Avaliação Parcial                            │
+└──────────────────────────────────────────────┘
+## Acessibilidade
 
-### 16.1 Botões
+O design deverá garantir:
 
-- primário: #5B3FA3;
-- secundário: #36A269;
-- neutro: branco ou transparente;
-- estados: normal, hover, foco, desabilitado.
+Contraste adequado;
+Foco visível;
+Hierarquia tipográfica;
+Labels nos campos;
+Ícones acompanhados de texto quando necessário;
+Não utilização exclusiva de cores para transmitir informações;
+Navegação consistente.
 
-### 16.2 Cards
 
-- fundo branco;
-- bordas suaves;
-- sombra leve;
-- espaçamento interno consistente;
-- títulos em #12355B;
-- texto secundário em cinza.
+## Layout
 
-### 16.3 Formulários
+A aplicação será projetada para notebooks, utilizando:
 
-- labels visíveis;
-- placeholders quando necessário;
-- estados normal/foco/erro/desabilitado;
-- mensagens de validação claras.
+Sidebar fixa;
+Conteúdo centralizado;
+Grid responsivo dentro da área disponível;
+Tabelas sem rolagem horizontal sempre que possível;
+Espaçamento consistente;
+Aproveitamento adequado da área horizontal.
 
-### 16.4 Feedback
+## Princípios de Design
 
-- sucesso: #36A269;
-- atenção: #F2C14E;
-- erro: cor de alerta contrastante.
+O JEPE deverá seguir cinco princípios:
 
----
+Clareza
+Informações importantes devem ser facilmente identificadas.
 
-## 17. Responsividade
+Hierarquia
+Títulos, informações e ações devem possuir níveis visuais distintos.
 
-A interface deve funcionar bem em notebooks e telas semelhantes.
+Consistência
+Componentes semelhantes devem possuir o mesmo comportamento e aparência.
 
-No notebook:
+Simplicidade
+Cada tela deverá apresentar apenas as informações necessárias para aquela etapa.
 
-- layout em colunas quando possível;
-- cards com largura controlada;
-- formulários sem rolagem horizontal desnecessária;
-- botões fáceis de usar.
-
----
-
-## 18. Acessibilidade
-
-- contraste adequado;
-- fontes legíveis;
-- áreas de clique confortáveis;
-- navegação por teclado;
-- labels claras;
-- mensagens compreensíveis.
-
----
-
-## 19. Componentes Reutilizáveis
-
-Os componentes devem ser consistentes e reutilizáveis:
-
-- Navbar
-- Sidebar
-- Button
-- Input
-- Select
-- Card
-- ProjectCard
-- StatusBadge
-- IndicatorCard
-- SearchBar
-- Filter
-- Modal
-- Toast
-- EvaluationForm
-- AdminTable
-
----
-
-## 20. Critérios de Aceitação
-
-- paleta JEPE aplicada de forma consistente;
-- hierarquia tipográfica uniforme;
-- layouts claros e organizados;
-- componentes visuais consistentes;
-- experiência responsiva em notebooks;
-- feedback claro de sucesso, aviso e erro;
-- navegação simples e previsível;
-- foco exclusivo em design visual e UX.
+Contexto
+O usuário deverá compreender facilmente onde está, qual etapa está visualizando e quais ações estão disponíveis.

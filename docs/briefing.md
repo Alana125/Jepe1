@@ -1,147 +1,209 @@
-Projeto: Sistema JEPE — Jornada de Ensino, Pesquisa e Extensão do IFAL
+# BRIEFING — SISTEMA JEPE
 
-Contexto
-O IFAL realiza a Jornada de Ensino, Pesquisa e Extensão (JEPE), evento destinado à apresentação e avaliação de projetos desenvolvidos pelos estudantes, promovendo a integração entre ensino, pesquisa, extensão, inovação e comunidade acadêmica.
+## 1. Identificação
 
-Problema
-O processo de inscrição dos projetos, organização das avaliações e registro das notas pode ser realizado manualmente ou de forma descentralizada, dificultando o acompanhamento das propostas, aumentando o risco de perda de informações e tornando mais trabalhoso o processo de consolidação das avaliações e classificação.
+**Nome:** Sistema JEPE — Jornada de Ensino, Pesquisa e Extensão do IFAL
 
-Atores
+**Instituição:** Instituto Federal de Alagoas — IFAL
 
-Aluno
-- Inscreve projeto.
-- Cadastra os integrantes.
-- Acompanha o projeto.
-- Edita apenas o projeto pelo qual é responsável.
-- Consulta avaliações e nota final quando disponibilizadas.
+**Tipo:** Sistema web para gerenciamento de projetos acadêmicos.
 
-Professor Avaliador
-- Visualiza projetos disponíveis para avaliação.
-- Avalia projetos.
-- Registra notas e comentários.
-- Edita sua própria avaliação enquanto a fase estiver aberta.
-- Não pode avaliar projeto no qual atua como orientador.
+---
 
-Administrador/Organização
-- Gerencia usuários.
-- Gerencia inscrições.
-- Define períodos de inscrição e avaliação.
-- Gerencia áreas e critérios.
-- Organiza e acompanha avaliações.
-- Consulta resultados.
-- Acompanha indicadores.
-- Visualiza rankings.
+## 2. Contexto
 
-Entidades principais
+A Jornada de Ensino, Pesquisa e Extensão (JEPE) é um evento destinado à apresentação e avaliação de projetos desenvolvidos no IFAL, promovendo a integração entre ensino, pesquisa, extensão, inovação e comunidade acadêmica.
 
-- Usuário
-- Projeto
-- Integrante
-- Avaliação
-- Área
-- Critério
-- Período de evento
+O sistema será desenvolvido para centralizar as etapas de cadastro, organização, avaliação e acompanhamento dos projetos da JEPE.
 
-Funcionalidades
+---
 
-- Autenticação e controle de acesso por perfil.
-- Inscrição de projetos.
-- Cadastro de integrantes.
-- Cadastro de orientador.
-- Listagem de projetos.
-- Filtro por área e situação.
-- Visualização de projeto.
-- Registro de avaliações.
-- Edição de avaliação enquanto a fase estiver aberta.
-- Ranking geral.
-- Ranking por área.
-- Cálculo automático da nota final.
-- Dashboard com indicadores.
-- Gerenciamento administrativo de áreas, critérios e períodos.
+## 3. Problema
 
-Regras de negócio
+O processo de inscrição dos projetos, organização das avaliações e consolidação das notas pode ser realizado de forma manual ou descentralizada.
 
-RB01. Cada projeto possui entre 2 e 5 integrantes.
-RB02. Apenas o responsável pela inscrição pode editar o projeto.
-RB03. Após o encerramento do período de inscrições, os projetos ficam somente leitura.
-RB04. Cada projeto precisa de pelo menos duas avaliações realizadas por professores diferentes para aparecer no ranking.
-RB05. Um professor pode avaliar um determinado projeto apenas uma vez.
-RB06. O professor pode editar sua avaliação enquanto a fase de avaliação estiver aberta.
-RB07. A nota final é calculada pela média simples das notas atribuídas em todos os critérios por todos os avaliadores.
-RB08. Um professor não pode avaliar um projeto no qual esteja cadastrado como orientador.
-RB09. O sistema deve respeitar as permissões de cada perfil.
-RB10. A situação do projeto deve acompanhar o fluxo do evento: Inscrito → Em avaliação → Avaliado → Classificado.
+Isso pode gerar:
 
-Áreas
-As áreas devem ser mantidas de forma configurável pelo administrador, pois a divisão oficial pode variar conforme a edição da JEPE.
-Como valores iniciais, considerar:
-- Ciências da Natureza
-- Ciências Exatas
-- Ciências Humanas
-- Tecnologia
-- Meio Ambiente
-- Linguagens
+- dificuldade no acompanhamento dos projetos;
+- dificuldade na distribuição e controle das avaliações;
+- possibilidade de conflitos entre avaliador e projeto;
+- demora na consolidação das notas;
+- dificuldade para acompanhar os resultados;
+- falta de centralização das informações.
 
-Critérios
-Os critérios também devem ser configuráveis pelo administrador.
-Como valores iniciais, considerar:
-- Relevância
-- Originalidade/Inovação
-- Rigor científico
-- Metodologia
-- Qualidade da apresentação
-- Aplicabilidade/Impacto
-- Contribuição para ensino, pesquisa ou extensão
-Cada critério deve permitir notas de 0 a 10.
+---
 
-Situações
-- Inscrito
-- Em avaliação
-- Avaliado
-- Classificado
+## 4. Objetivo
 
-Fora do escopo
+Desenvolver um sistema web que permita organizar digitalmente o processo da JEPE, desde o cadastro dos projetos até sua avaliação e apresentação dos resultados.
 
-- Upload de arquivos.
-- Certificados.
-- Votação do público.
-- Controle de presença.
-- Inscrição de visitantes.
-- Organização de salas/estandes.
-- Submissão de artigos completos.
-- Cronograma completo do evento.
+O sistema deverá centralizar:
 
-Formulário de Projeto
+- projetos;
+- professores;
+- integrantes;
+- áreas;
+- critérios;
+- períodos;
+- avaliações;
+- notas;
+- resultados;
+- indicadores administrativos.
 
-- Título
-- Área
-- Responsável
-- Integrantes
-- Orientador
-- Resumo
-- Objetivos
-- Metodologia
+---
 
-Formulário de Avaliação
+## 5. Público e perfis
 
-- Projeto
-- Avaliador
-- Data
-- Critérios configurados
-- Notas de 0 a 10
-- Comentário
+### Professor
 
-Dashboard
-Deve apresentar:
-- Total de projetos.
-- Projetos por área.
-- Projetos por situação.
-- Total de avaliações.
-- Avaliações pendentes.
-- Média geral.
-- Quantidade de avaliadores.
-- Ranking geral.
-- Ranking por área.
+O professor possuirá um único perfil no sistema, podendo exercer diferentes funções conforme o contexto.
 
-Observação
-Os períodos de inscrição e avaliação devem ser configuráveis pelo administrador, em vez de serem fixos no código. O sistema deve manter a estrutura para configuração de fases e prazos da JEPE sem inventar regras adicionais fora do edital oficial.
+Poderá:
+
+- cadastrar e acompanhar projetos;
+- atuar como professor responsável/orientador;
+- visualizar projetos;
+- realizar avaliações;
+- registrar notas;
+- adicionar comentários;
+- editar sua avaliação enquanto o período estiver aberto;
+- consultar resultados.
+
+O professor não poderá avaliar um projeto no qual esteja registrado como orientador/responsável.
+
+### Administrador/Organização
+
+Responsável pelo gerenciamento do sistema e da edição da JEPE.
+
+Poderá:
+
+- gerenciar professores;
+- gerenciar projetos;
+- configurar áreas;
+- configurar critérios;
+- configurar períodos;
+- acompanhar avaliações;
+- consultar resultados;
+- visualizar indicadores.
+
+### Aluno
+
+O aluno **não será usuário do sistema nesta versão**.
+
+A participação dos alunos ocorrerá por meio do cadastro dos integrantes de cada projeto.
+
+Funcionalidades específicas para login e área do aluno ficam para uma versão futura.
+
+---
+
+## 6. Principais funcionalidades
+
+### Autenticação
+- Login;
+- controle de acesso;
+- diferenciação entre professor e administrador.
+
+### Projetos
+- cadastro;
+- edição;
+- visualização;
+- definição da área;
+- definição do professor responsável;
+- cadastro dos integrantes;
+- resumo;
+- objetivos;
+- metodologia;
+- acompanhamento do status.
+
+### Avaliações
+- listagem dos projetos disponíveis para avaliação;
+- preenchimento dos critérios;
+- notas de 0 a 10;
+- comentário;
+- edição da própria avaliação durante o período permitido;
+- bloqueio de avaliação do próprio projeto/orientado.
+
+### Resultados
+- consulta dos projetos avaliados;
+- médias finais;
+- notas;
+- situação/classificação dos projetos;
+- consolidação das avaliações.
+
+### Administração
+- professores;
+- áreas;
+- critérios;
+- períodos;
+- resultados;
+- indicadores.
+
+---
+
+## 7. Status dos projetos
+
+O fluxo principal será:
+
+**Inscrito → Em avaliação → Avaliado → Classificado**
+
+---
+
+## 8. Tecnologia
+
+### Frontend
+- React;
+- Vite;
+- React Router;
+- JavaScript;
+- HTML/CSS.
+
+### Backend
+- Node.js;
+- Express;
+- API REST.
+
+### Banco de dados
+- PostgreSQL;
+- migrations;
+- JSONB para armazenamento das notas por critério.
+
+### Documentação
+- OpenAPI/Swagger.
+
+### Arquitetura
+
+```text
+Interface React/Vite
+        ↓
+REST API
+        ↓
+Node.js + Express
+        ↓
+Services / Repositories
+        ↓
+PostgreSQL
+```
+
+---
+
+## 9. Fora do escopo
+
+Não fazem parte da primeira versão:
+
+- login de alunos;
+- área específica do aluno;
+- inscrição realizada diretamente pelo aluno;
+- upload de arquivos;
+- artigos completos;
+- certificados;
+- votação pública;
+- controle de presença;
+- gerenciamento de salas ou estandes;
+- calendário completo do evento;
+- sistema de ranking.
+
+---
+
+## 10. Resultado esperado
+
+O Sistema JEPE deverá proporcionar uma plataforma centralizada para gerenciamento dos projetos e avaliações, reduzindo processos manuais e facilitando o acompanhamento das informações pela organização e pelos professores.
